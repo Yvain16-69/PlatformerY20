@@ -199,13 +199,10 @@ class TableauTiled extends Tableau{
      */
     moveParallax(){
         //le ciel se déplace moins vite que la caméra pour donner un effet paralax
-<<<<<<< HEAD
         // this.sky.tilePositionX=this.cameras.main.scrollX*0.6;
         // this.sky.tilePositionY=this.cameras.main.scrollY*0.6;
-=======
         this.ciel.tilePositionX=this.cameras.main.scrollX*0.6;
         this.ciel.tilePositionY=this.cameras.main.scrollY*0.6;
->>>>>>> 492cd30c9da24ac1d360d376fd50807b90435bf8
         // this.sky2.tilePositionX=this.cameras.main.scrollX*0.7+100;
         // this.sky2.tilePositionY=this.cameras.main.scrollY*0.7+100;
     }
