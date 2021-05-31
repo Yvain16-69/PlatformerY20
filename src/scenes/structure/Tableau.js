@@ -94,15 +94,15 @@ class Tableau extends Phaser.Scene{
         }
     }
 
-    ramasserEtoile (player, star)
+    ramasserEtoile (player, )
     {
-        star.disableBody(true, true);
+        vinile.disableBody(true, true);
         ui.gagne();
 
         //va lister tous les objets de la scène pour trouver les étoies et vérifier si elles sont actives
         let totalActive=0;
         for(let child of this.children.getChildren()){
-            if(child.texture && child.texture.key==="star"){
+            if(child.texture && child.texture.key==="vinile"){
                 if(child.active){
                     totalActive++;
                 }

@@ -24,6 +24,9 @@ class TableauTiled extends Tableau{
 
         this.load.image('tir', 'assets/Attack.png');
 
+        //collectible
+        this.load.image('plume', 'assets/plume.png');
+
         //atlas de texture généré avec https://free-tex-packer.com/app/
         //on y trouve notre étoiles et une tête de mort
     }
@@ -152,9 +155,9 @@ class TableauTiled extends Tableau{
         this.physics.add.collider(this.player, this.solide);
         this.physics.add.collider(this.player, this.plat);
 
-        this.physics.add.collider(this.stars, this.solide);
+        this.physics.add.collider(this.viniles, this.solide);
         //si le joueur touche une étoile dans le groupe...
-        this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
+        this.physics.add.overlap(this.player, this.viniles, this.ramasserEtoile, null, this);
         //quand on touche la lave, on meurt
         this.physics.add.collider(this.player, this.lave,this.playerDie,null,this);
 
@@ -166,7 +169,8 @@ class TableauTiled extends Tableau{
         //this.boom.setDepth(z--);
         this.monstersContainer.setDepth(z--);
 
-        this.stars.setDepth(z--);
+        vinileContainer.setDepth(z--);
+        //this.viniles.setDepth(z--);
         //starsFxContainer.setDepth(z--);
         this.plat.setDepth(z--);
         this.solide.setDepth(z--);
