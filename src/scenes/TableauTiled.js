@@ -22,7 +22,7 @@ class TableauTiled extends Tableau{
         this.load.image('night', 'assets/Fond.png');
         this.load.image('Burt', 'assets/EnnemiVibe.png');
 
-        this.load.image('tir', 'assets/concombre1.png');
+        this.load.image('tir', 'assets/Attack.png');
 
         //atlas de texture généré avec https://free-tex-packer.com/app/
         //on y trouve notre étoiles et une tête de mort
