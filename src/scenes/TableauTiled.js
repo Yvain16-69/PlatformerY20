@@ -14,18 +14,18 @@ class TableauTiled extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/Tiled/Tile_sheet2.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/TiledMap/MapVibe.json');
+        this.load.tilemapTiledJSON('map', 'assets/TiledMap/MapVibe2.json');
 
         // -----et puis aussi-------------
         this.load.image('ciel', 'assets/ciel.png');
-        this.load.image('monster-fly', 'assets/Burt.png');
+        this.load.image('monster-fly', 'assets/Motard.png');
         this.load.image('night', 'assets/Fond.png');
         this.load.image('Burt', 'assets/EnnemiVibe.png');
 
         this.load.image('tir', 'assets/Attack.png');
 
         //collectible
-        this.load.image('plume', 'assets/plume.png');
+        this.load.image('vinile', 'assets/vinile.png');
 
         //atlas de texture généré avec https://free-tex-packer.com/app/
         //on y trouve notre étoiles et une tête de mort
@@ -103,6 +103,17 @@ class TableauTiled extends Tableau{
           this.plightContainer.add(light);
         });
 
+        this.vinileContainer=this.add.container();
+        ici.vinileObjects = this.map.getObjectLayer('vinile')['objects'];
+        // On crée des montres volants pour chaque objet rencontré
+        ici.vinileObjects.forEach(vinileObject => {
+            let vinil=new Vinile(this,vinileObject.x,vinileObject.y);
+            this.vinileContainer.add(vinil);
+            this.physics.add.collider(vinil, this.solide);
+            this.physics.add.overlap(this.player, vinil, this.ramasserEtoile, null, this);
+
+        });
+
 
         //----------débug---------------------
         
@@ -155,9 +166,8 @@ class TableauTiled extends Tableau{
         this.physics.add.collider(this.player, this.solide);
         this.physics.add.collider(this.player, this.plat);
 
-        this.physics.add.collider(this.viniles, this.solide);
+        // this.physics.add.collider(this.viniles, this.solide);
         //si le joueur touche une étoile dans le groupe...
-        this.physics.add.overlap(this.player, this.viniles, this.ramasserEtoile, null, this);
         //quand on touche la lave, on meurt
         this.physics.add.collider(this.player, this.lave,this.playerDie,null,this);
 
@@ -169,7 +179,7 @@ class TableauTiled extends Tableau{
         //this.boom.setDepth(z--);
         this.monstersContainer.setDepth(z--);
 
-        vinileContainer.setDepth(z--);
+        this.vinileContainer.setDepth(z--);
         //this.viniles.setDepth(z--);
         //starsFxContainer.setDepth(z--);
         this.plat.setDepth(z--);

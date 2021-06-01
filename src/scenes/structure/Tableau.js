@@ -94,9 +94,9 @@ class Tableau extends Phaser.Scene{
         }
     }
 
-    ramasserEtoile (player, )
+    ramasserEtoile (player, vinil)
     {
-        vinile.disableBody(true, true);
+        vinil.disableBody(true, true);
         ui.gagne();
 
         //va lister tous les objets de la scène pour trouver les étoies et vérifier si elles sont actives
@@ -108,9 +108,9 @@ class Tableau extends Phaser.Scene{
                 }
             }
         }
-        if(totalActive===0){
-            this.win();
-        }
+        // if(totalActive===0){
+        //     this.win();
+        // }
     }
 
     /**

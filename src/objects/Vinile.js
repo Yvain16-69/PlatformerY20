@@ -14,14 +14,14 @@ class Vinile extends ObjetPhysique{
         this.body.allowGravity=false;
         this.setBounceY(0);
 
-        this.anims.create({
-            key: 'right',
-            frames: this.anims.generateFrameNumbers('vinile', { start: 0, end: 7 }),
-            frameRate: 15,
-            repeat: -1
-        });
+        // this.anims.create({
+        //     key: 'right',
+        //     frames: this.anims.generateFrameNumbers('vinile', { start: 0, end: 7 }),
+        //     frameRate: 15,
+        //     repeat: -1
+        // });
 
-        let me=this;
-        this.anims.play('right', true);
+        // let me=this;
+        // this.anims.play('right', true);
     }
 }
