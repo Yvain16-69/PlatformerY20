@@ -26,6 +26,10 @@ class Tableau extends Phaser.Scene{
             'assets/Melody1.png',
             { frameWidth: 28, frameHeight: 45 }
         );
+        this.load.spritesheet('motard',
+            'assets/Motard_spriteSheet.png',
+            { frameWidth: 64, frameHeight: 64}
+        );
      }
      create(){
          Tableau.current=this;
@@ -161,7 +165,7 @@ class Tableau extends Phaser.Scene{
                     me.saigne(me.player,function(){
                         //à la fin de la petite anim, on relance le jeu
                         me.blood.visible=false;
-                        me.player.anims.play('turn');
+                        // me.player.anims.play('turn');
                         me.player.isDead=false;
                         me.scene.restart();
                     })

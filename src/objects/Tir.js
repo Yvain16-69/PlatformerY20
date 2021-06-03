@@ -18,5 +18,8 @@ class Tir extends ObjetPhysique{
       scene.monstersContainer.iterate(monster=>{
          scene.physics.add.overlap(this, monster, function(){monster.Tmortlol(); tir.destroy()}, null, scene);
       })
+      scene.motardContainer.iterate(monster=>{
+         scene.physics.add.overlap(this, monster, function(){monster.Tmortlol(); tir.destroy()}, null, scene);
+      })
    }
 }

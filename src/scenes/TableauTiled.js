@@ -1,4 +1,7 @@
 class TableauTiled extends Tableau{
+    constructor(){
+        super("jeu");
+      }
     /**
      * Ce tableau démontre comment se servir de Tiled, un petit logiciel qui permet de designer des levels et de les importer dans Phaser (entre autre).
      *
@@ -14,7 +17,7 @@ class TableauTiled extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/Tiled/Tile_sheet2.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/TiledMap/MapVibe2.json');
+        this.load.tilemapTiledJSON('map', 'assets/TiledMap/MapVibe3.json');
 
         // -----et puis aussi-------------
         this.load.image('ciel', 'assets/ciel.png');
@@ -114,6 +117,15 @@ class TableauTiled extends Tableau{
 
         });
 
+        this.motardContainer=this.add.container();
+        ici.monstreTestObject = this.map.getObjectLayer('Motard')['objects'];
+        // On crée des montres volants pour chaque objet rencontré
+        ici.monstreTestObject.forEach(monsterObject => {
+            let monster=new Motard(this,monsterObject.x,monsterObject.y);
+            this.motardContainer.add(monster);
+            this.physics.add.collider(monster, this.solide);
+        });
+
 
         //----------débug---------------------
         
@@ -178,6 +190,7 @@ class TableauTiled extends Tableau{
         debug.setDepth(z--);
         //this.boom.setDepth(z--);
         this.monstersContainer.setDepth(z--);
+        this.motardContainer.setDepth(z--);
 
         this.vinileContainer.setDepth(z--);
         //this.viniles.setDepth(z--);
