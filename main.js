@@ -14,8 +14,8 @@ let config = {
         }
     },
     scene: [
+        new TableauIntro("menu"),
         new Ui(),
-
         new TableauTiled("Vibe"),
         new Tableau08("Un plateau qui sort du cadre"),
         new TableauZoo("Un Zoo ?"),
