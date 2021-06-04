@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"MapVibe3.json"
+         "target":"MapVibe4.json"
         }
     },
  "height":16,
@@ -210,7 +210,7 @@
          "name":"image",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":100,
          "x":0,
          "y":0

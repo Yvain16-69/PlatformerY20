@@ -11,6 +11,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.setDisplaySize(70,100)
         this.setBodySize(this.body.width,this.body.height);
         this.setOffset(0, 0);
+        this.rechargeSonTir = false;
 
         this.anims.create({
             key: 'left',
@@ -93,11 +94,19 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     shoot()
     {
-        var bullet = new Tir(this.scene,this.x, this.y);
-        console.log("Tir");
-        setTimeout(function(){
-            bullet.destroy();
-        },1500);
+        
+
+        if(this.rechargeSonTir === false) {
+            this.rechargeSonTir = true;
+            var bullet = new Tir(this.scene,this.x, this.y);
+            console.log("Tir");
+            setTimeout(function(){
+                bullet.destroy();
+            },1500);
+            setTimeout(function () {
+                Tableau.current.player.rechargeSonTir = false;
+            }, 900);
+        }
     }
 
 

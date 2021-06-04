@@ -17,7 +17,7 @@ class TableauTiled extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/Tiled/Tile_sheet2.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/TiledMap/MapVibe3.json');
+        this.load.tilemapTiledJSON('map', 'assets/TiledMap/MapVibe4.json');
 
         // -----et puis aussi-------------
         this.load.image('ciel', 'assets/ciel.png');
@@ -58,17 +58,20 @@ class TableauTiled extends Tableau{
         this.solide = this.map.createLayer('sol', this.tileset, 0, 0);
         this.decor = this.map.createLayer('décor', this.tileset, 0, 0);
         this.plat = this.map.createLayer('platformes', this.tileset, 0, 0);
+        this.image = this.map.createLayer('image', this.tileset, 0, 0);
 
 
         //on définit les collisions, plusieurs méthodes existent:
 
         this.solide.setCollisionByProperty({ collides: true });
         this.plat.setCollisionByProperty({ collides: true });
+        this.image.setCollisionByProperty({ collides: true });
 
 
         // 2 manière la plus simple (là où il y a des tiles ça collide et sinon non)
         this.solide.setCollisionByExclusion(-1, true);
         this.plat.setCollisionByExclusion(-1, true);
+        this.image.setCollisionByExclusion(-1, true);
 
 
         //----------les étoiles (objets) ---------------------
@@ -135,6 +138,11 @@ class TableauTiled extends Tableau{
             debug.visible=false;
         }
 
+        this.image.renderDebug(debug,{
+            tileColor: null, // Couleur des tiles qui ne collident pas
+            collidingTileColor: new Phaser.Display.Color(255, 0, 0, 255), //Couleur des tiles qui collident
+            faceColor: null // Color of colliding face edges
+       });
 
         //---------- parallax ciel (rien de nouveau) -------------
 
@@ -204,6 +212,7 @@ class TableauTiled extends Tableau{
         this.plightContainer.setDepth(z--);
 
         this.decor.setDepth(z--);
+        this.image.setDepth(z--);
         //this.derriere.setDepth(z--);
         this.ciel.setDepth(z--);
         // this.sky2.setDepth(z--);
